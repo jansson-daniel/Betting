@@ -85,7 +85,7 @@ LiveBetting = function (url, callback) {
 	}
 
 	return {
-		init: function(data) {
+		init: function (data) {
 			setEvents(data);
 			renderCards();
 			var counter = 0;
