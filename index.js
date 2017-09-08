@@ -4,9 +4,7 @@ var express = require('express'),
     port = process.env.PORT || 3000,
     server = http.createServer(app);
 
-app.configure(function(){
-    app.use(express.static(__dirname + '/static'));
-});
+app.use(express.static(__dirname + '/static'));
 
 app.get('/', function(req, res){
     res.sendFile(__dirname + '/index.html');
