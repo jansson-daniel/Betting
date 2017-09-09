@@ -7,20 +7,24 @@
 LiveBetting = function (url, callback) {
     const availableSports = ['tennis', 'football', 'basketball'];
     const wrapper = document.getElementById('wrapper');
+    const rootUrl = 'https://www.unibet.com/betting#/event/live';
 
     let liveEvents = [];
+    let groups = [];
     let markup = '';
     let counter = 0;
 
     /**
+	 * construct (private)
      * Sets up initial application parameters
-     * and event-listener on start-button
+     * and utility functions
      * @returns {void}
      */
 	function construct (data) {
         liveEvents = data.liveEvents;
+        groups = data.group;
 
-        // If today, show today label, otherwise date-format
+        // If game is today, show today label, otherwise date-format
         this.getGameDate = date => this.gameIsToday(date) ? `Today,  ${this.getTimeFormat(date)}` : `${getDateFormat(date)}, ${this.getTimeFormat(date) }`;
         // Show name of sport if available, otherwise 'default'
         this.getSport = sport => availableSports.indexOf(sport) > -1 ? sport : 'default';
@@ -31,6 +35,7 @@ LiveBetting = function (url, callback) {
 
         // Create game object
         this.getGame = index => ({
+			id: liveEvents[index].event.id,
             name: liveEvents[index].event.name,
             home: liveEvents[index].liveData.score.home,
             away: liveEvents[index].liveData.score.away,
@@ -41,9 +46,9 @@ LiveBetting = function (url, callback) {
 	}
 
     /**
-     * Start animation of the symbols
-     * to show result visually for user
-     * @returns {object} event
+	 * requestData (private)
+     * Request game-data from unibet api
+     * @returns {object} data
      */
 	function requestData () {
         const script = document.createElement('script');
@@ -56,9 +61,10 @@ LiveBetting = function (url, callback) {
 	}
 
     /**
-     * Start animation of the symbols
-     * to show result visually for user
-     * @returns {object} event
+	 * showNewGame (private)
+     * Update container with new game
+     * @param {object} event
+     * @returns {void}
      */
 	function showNewGame(event) {
         event.target.innerHTML = '';
@@ -68,19 +74,21 @@ LiveBetting = function (url, callback) {
 	}
 
     /**
-     * Start animation of the symbols
-     * to show result visually for user
-     * @returns {object} event
+	 * getDateFormat (private)
+     * Get date-format for game
+	 * @param {object} date
+     * @returns {string} date-format
      */
     function getDateFormat (date) {
         const day = date.getDate() > 9 ? date.getDate() : '0' + date.getDate();
         const month = date.getMonth() > 9 ? date.getMonth() : '0' + date.getMonth();
         const year = date.getFullYear();
 
-        return year + '/' + month + '/' + day;
+        return `${year}/${month}/${day}`;
     }
 
     /**
+	 * createInterval (private)
      * Start animation of the symbols
      * to show result visually for user
      * @returns {object} event
@@ -99,25 +107,47 @@ LiveBetting = function (url, callback) {
 	}
 
     /**
-     * Start animation of the symbols
-     * to show result visually for user
-     * @returns {object} event
+	 * whichAnimationEvent (private)
+     * Check for browser-specific event
+     * @returns {string} type of event event
      */
-    function animateCards () {
-        wrapper.classList.add('slide-out');
-        wrapper.addEventListener('webkitTransitionEnd', showNewGame, false);
+    function whichAnimationEvent () {
+        const element = document.createElement("fakeelement");
+        const animations = {
+            'transition': 'transitionend',
+            'WebkitTransition': 'webkitTransitionEnd',
+            'MozTransition': 'transitionend',
+            'OTransition': 'otransitionend'
+        };
+
+        for (let type in animations){
+            if (element.style[type] !== undefined){
+                return animations[type];
+            }
+        }
     }
 
     /**
-     * Start animation of the symbols
-     * to show result visually for user
-     * @returns {object} event
+	 * animateCards (private)
+     * Start animation of the game-cards
+	 * Call showNewCame when animation ends to show new card
+     * @returns {void}
+     */
+    function animateCards () {
+        wrapper.classList.add('slide-out');
+        wrapper.addEventListener(whichAnimationEvent(), showNewGame, true);
+    }
+
+    /**
+	 * removeCache (private)
+     * Remove cached data after 2min
+     * @returns {void}
      */
     function removeCache () {
     	let counter = 0;
     	const interval = setInterval(() => {
     		counter++;
-			if (counter === 10) {
+			if (counter === 12e4) {
 				window.localStorage.removeItem('data');
 				clearInterval(interval);
 			}
@@ -125,9 +155,9 @@ LiveBetting = function (url, callback) {
 	}
 
     /**
-     * Start animation of the symbols
-     * to show result visually for user
-     * @returns {object} event
+	 * render (private)
+     * Render cards on screen
+     * @returns {void}
      */
     function render () {
     	markup = '';
@@ -136,12 +166,12 @@ LiveBetting = function (url, callback) {
             markup +=
                 `<div class="card">
 					<span class="score">${this.getGame(i).home} – ${this.getGame(i).away}</span>
-					<div class="box">
-						<img class="icon" src="${this.getGame(i).src()}"/>
+					<div class="game">
+						<img class="sport-icon" src="${this.getGame(i).src()}" alt="sport-icon" />
 						<span class="name">${this.getGame(i).name}</span>
 					</div>
 					<span class="date">${this.getGame(i).date}</span>
-					<button class="bet-btn">Place a bet</button>
+					<a href="${rootUrl}/${this.getGame(i).id}" target="blank" class="betting-btn">Place a bet</a>
 				</div>`
         }
 
@@ -149,13 +179,23 @@ LiveBetting = function (url, callback) {
     }
 
 	return {
+        /**
+         * init (public)
+         * initializes app
+         * @returns {void}
+         */
 		init: (data) => {
 			construct(data);
 			removeCache();
             createInterval();
             render();
 		},
-		loadMatches: () => {
+        /**
+         * loadLiveEvents (public)
+         * makes request to fetch data
+         * @returns {object} data
+         */
+		loadLiveEvents: () => {
 			requestData();
 		}
 	}
