@@ -95,7 +95,7 @@ window.onload = (function (window) {
             const head = document.head;
 
             script.type = 'text/javascript';
-            script.src = `${url}&callback=liveCallback`;
+            script.src = url + '&callback=liveCallback';
             head.appendChild(script);
             head.removeChild(script);
         }
@@ -124,7 +124,7 @@ window.onload = (function (window) {
             const month = date.getMonth() > 9 ? date.getMonth() : '0' + date.getMonth();
             const year = date.getFullYear();
 
-            return `${year}/${month}/${day}`;
+            return year + '/' + month + '/' + day;
         }
 
         /**
