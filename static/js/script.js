@@ -6,21 +6,14 @@ window.onload = (function (window) {
      * Description: a time-betting application
      */
     LiveBetting = function (url, callback) {
-        var availableSports = ['tennis', 'football', 'basketball'];
-        var wrapper = document.getElementById('wrapper');
-        var rootUrl = 'https://www.unibet.com/betting#/event/live';
+        const availableSports = ['tennis', 'football', 'basketball'];
+        const wrapper = document.getElementById('wrapper');
+        const rootUrl = 'https://www.unibet.com/betting#/event/live';
 
-        var liveEvents = [];
-        var groups = [];
-        var markup = '';
-        var counter = 0;
-
-        // request-callback
-        // cache data and initialize app
-        var liveCallback = function (data) {
-            window.localStorage.setItem('data', JSON.stringify(data));
-            init(data);
-        };
+        let liveEvents = [];
+        let groups = [];
+        let markup = '';
+        let counter = 0;
 
         /**
          * construct (private)
@@ -31,18 +24,6 @@ window.onload = (function (window) {
         function construct(data) {
             liveEvents = data.liveEvents;
             groups = data.group;
-        }
-
-        /**
-         * init (public)
-         * initializes app
-         * @returns {void}
-         */
-        function init (data) {
-            construct(data);
-            removeCache();
-            createInterval();
-            render();
         }
 
         /**
@@ -110,8 +91,8 @@ window.onload = (function (window) {
          * @returns {object} data
          */
         function requestData() {
-            var script = document.createElement('script');
-            var head = document.head;
+            const script = document.createElement('script');
+            const head = document.head;
 
             script.type = 'text/javascript';
             script.src = url + '&callback=liveCallback';
@@ -139,9 +120,9 @@ window.onload = (function (window) {
          * @returns {string} date-format
          */
         function getDateFormat(date) {
-            var day = date.getDate() > 9 ? date.getDate() : '0' + date.getDate();
-            var month = date.getMonth() > 9 ? date.getMonth() : '0' + date.getMonth();
-            var year = date.getFullYear();
+            const day = date.getDate() > 9 ? date.getDate() : '0' + date.getDate();
+            const month = date.getMonth() > 9 ? date.getMonth() : '0' + date.getMonth();
+            const year = date.getFullYear();
 
             return year + '/' + month + '/' + day;
         }
@@ -153,7 +134,7 @@ window.onload = (function (window) {
          * @returns {object} event
          */
         function createInterval() {
-            var interval = setInterval(function () {
+            const interval = setInterval(function () {
                 animateCards();
                 counter += 3500;
 
@@ -171,15 +152,15 @@ window.onload = (function (window) {
          * @returns {string} type of event event
          */
         function whichAnimationEvent() {
-            var element = document.createElement("fakeelement");
-            var animations = {
+            const element = document.createElement("fakeelement");
+            const animations = {
                 'transition': 'transitionend',
                 'WebkitTransition': 'webkitTransitionEnd',
                 'MozTransition': 'transitionend',
                 'OTransition': 'otransitionend'
             };
 
-            for (var type in animations) {
+            for (let type in animations) {
                 if (element.style[type] !== undefined) {
                     return animations[type];
                 }
@@ -203,8 +184,8 @@ window.onload = (function (window) {
          * @returns {void}
          */
         function removeCache() {
-            var counter = 0;
-            var interval = setInterval(function () {
+            let counter = 0;
+            const interval = setInterval(function () {
                 counter++;
                 if (counter === 12e4) {
                     window.localStorage.removeItem('data');
@@ -239,6 +220,17 @@ window.onload = (function (window) {
 
         return {
             /**
+             * init (public)
+             * initializes app
+             * @returns {void}
+             */
+            init: function (data) {
+                construct(data);
+                removeCache();
+                createInterval();
+                render();
+            },
+            /**
              * loadLiveEvents (public)
              * makes request to fetch data
              * @returns {object} data
@@ -247,6 +239,13 @@ window.onload = (function (window) {
                 requestData();
             }
         }
+    };
+
+    // request-callback
+    // cache data and initialize app
+    var liveCallback = function (data) {
+        window.localStorage.setItem('data', JSON.stringify(data));
+        liveBetting.init(data);
     };
 
     var url = 'https://api.unicdn.net/v1/feeds/sportsbook/event/live.jsonp?app_id=ca7871d7&app_key=5371c125b8d99c8f6b5ff9a12de8b85a';
