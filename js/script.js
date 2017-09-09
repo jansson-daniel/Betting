@@ -134,7 +134,7 @@ window.onload = (function (window) {
          * @returns {object} event
          */
         function createInterval() {
-            const interval = setInterval(() => {
+            const interval = setInterval(function () {
                 animateCards();
                 counter += 3500;
 
@@ -185,7 +185,7 @@ window.onload = (function (window) {
          */
         function removeCache() {
             let counter = 0;
-            const interval = setInterval(() => {
+            const interval = setInterval(function () {
                 counter++;
                 if (counter === 12e4) {
                     window.localStorage.removeItem('data');
