@@ -2,13 +2,12 @@
  * Name: LiveBetting
  * Author: Daniel Jansson
  * Date: 2017-09-09
- * Description: a time-betting application
+ * Description: a live time-betting application
  */
 LiveBetting = function (url, callback) {
     var availableSports = ['tennis', 'football', 'basketball'];
     var wrapper = document.getElementById('wrapper');
     var rootUrl = 'https://www.unibet.com/betting#/event/live';
-
     var liveEvents = [];
     var sportIcon;
     var bettingBtn;
@@ -19,7 +18,7 @@ LiveBetting = function (url, callback) {
      * @param {number} index
      * @returns {object}
      */
-    function getGame(index) {
+    function getGame (index) {
         var gameObject;
 
         if (liveEvents.length === 0) {
@@ -54,7 +53,7 @@ LiveBetting = function (url, callback) {
      * @param {object} date
      * @returns {string}
      */
-    function getGameDate(date) {
+    function getGameDate (date) {
         return gameIsToday(date) ? 'Today, ' + getTimeFormat(date) : getDateFormat(date) + ', ' + getTimeFormat(date);
     }
 
@@ -64,7 +63,7 @@ LiveBetting = function (url, callback) {
      * @param {string} sport
      * @returns {string}
      */
-    function getSport(sport) {
+    function getSport (sport) {
         return availableSports.indexOf(sport) > -1 ? sport : 'default';
     }
 
@@ -74,7 +73,7 @@ LiveBetting = function (url, callback) {
      * @param {object} date
      * @returns {string}
      */
-    function getTimeFormat(date) {
+    function getTimeFormat (date) {
         return date.toLocaleTimeString(navigator.language, {hour: '2-digit', minute: '2-digit'});
     }
 
@@ -84,7 +83,7 @@ LiveBetting = function (url, callback) {
      * @param {object} date
      * @returns {string} date-format
      */
-    function getDateFormat(date) {
+    function getDateFormat (date) {
         var day = date.getDate() > 9 ? date.getDate() : '0' + date.getDate();
         var month = date.getMonth() > 9 ? date.getMonth() : '0' + date.getMonth();
         var year = date.getFullYear();
@@ -98,7 +97,7 @@ LiveBetting = function (url, callback) {
      * @param {object} date
      * @returns {boolean}
      */
-    function gameIsToday(date) {
+    function gameIsToday (date) {
         return new Date().getDate() === new Date(date).getDate();
     }
 
@@ -107,7 +106,7 @@ LiveBetting = function (url, callback) {
      * Request game-data from Unitbet Api
      * @returns {object} live data
      */
-    function requestData() {
+    function requestData () {
         var script = document.createElement('script');
         var head = document.head;
 
@@ -119,11 +118,11 @@ LiveBetting = function (url, callback) {
 
     /**
      * showNewGame (private)
-     * Update container with new game
+     * Update container with new live events
      * @param {object} event
      * @returns {void}
      */
-    function showNewGame(event) {
+    function showNewGame (event) {
         event.target.innerHTML = '';
         event.target.classList.remove('slide-out');
         liveEvents.push(liveEvents.shift());
@@ -132,22 +131,19 @@ LiveBetting = function (url, callback) {
 
     /**
      * createInterval (private)
-     * Start animation of the symbols
-     * to show result visually for user
+     * Cache data and start animation of cards
      * @returns {object} event
      */
-    function createInterval() {
+    function createAnimation () {
         if (liveEvents.length > 0) {
-            var interval = setInterval(function () {
-                var storage = window.localStorage.getItem('data');
-                animateCards();
+            var counter = 0;
 
-                // Only request data from Api
-                // if no cached data (2 min from page-load)
-                if (!storage) {
-                    clearInterval(interval);
-                    requestData();
+            setInterval(function () {
+                counter++;
+                if (counter > 24) {
+                    window.localStorage.removeItem('data');
                 }
+                animateCards();
             }, 3500);
         }
     }
@@ -157,7 +153,7 @@ LiveBetting = function (url, callback) {
      * Check for browser-specific event
      * @returns {string} type of event event
      */
-    function whichAnimationEvent() {
+    function whichAnimationEvent () {
         var element = document.createElement("fakeelement");
         var animations = {
             'transition': 'transitionend',
@@ -179,31 +175,15 @@ LiveBetting = function (url, callback) {
      * Call showNewCame when animation ends to show new card
      * @returns {void}
      */
-    function animateCards() {
+    function animateCards () {
         wrapper.classList.add('slide-out');
         wrapper.addEventListener(whichAnimationEvent(), showNewGame, true);
     }
 
     /**
-     * removeCache (private)
-     * Remove cached data after 2min
-     * @returns {void}
-     */
-    function removeCache() {
-        var counter = 0;
-        var interval = setInterval(function () {
-            counter++;
-            // remove cached data 2 minutes after page-load
-            if (counter === 120) {
-                window.localStorage.removeItem('data');
-                clearInterval(interval);
-            }
-        }, 1000);
-    }
-
-    /**
      * createIcons (private)
      * Render elements if live-data exist
+     * @param {number} index, game object index
      * @returns {void}
      */
     function createIcons (index) {
@@ -221,7 +201,7 @@ LiveBetting = function (url, callback) {
      * Renders cards on screen
      * @returns {void}
      */
-    function render() {
+    function render () {
         var markup = '';
 
         for (var i = 0; i < 2; i++) {
@@ -244,18 +224,18 @@ LiveBetting = function (url, callback) {
         /**
          * init (public)
          * initializes application
+         * @param {object} data, live-data
          * @returns {void}
          */
-        init: function (data) {
+        start: function (data) {
             liveEvents = data.liveEvents;
-            removeCache();
-            createInterval();
+            createAnimation();
             render();
         },
         /**
          * loadLiveEvents (public)
          * makes request to fetch data
-         * @returns {object} data
+         * @returns {void}
          */
         loadLiveEvents: function () {
             requestData();
@@ -263,6 +243,7 @@ LiveBetting = function (url, callback) {
     }
 };
 
+// Create LiveBetting object
 var url = 'https://api.unicdn.net/v1/feeds/sportsbook/event/live.jsonp?app_id=ca7871d7&app_key=5371c125b8d99c8f6b5ff9a12de8b85a';
 var liveBetting = new LiveBetting(url, 'liveCallback');
 var cache = window.localStorage.getItem('data');
@@ -270,14 +251,21 @@ var cache = window.localStorage.getItem('data');
 // If cached data initialize app,
 // otherwise make api request to fetch data
 if (cache) {
-    liveBetting.init(JSON.parse(cache))
+    liveBetting.start(JSON.parse(cache))
 } else {
     liveBetting.loadLiveEvents();
 }
 
-// Api-request callback
-// cache data and initialize app
+/**
+ * liveCallback (global)
+ * Api-request callback
+ * @param {object} data, live-data
+ * @returns {void}
+ */
 var liveCallback = function (data) {
-    window.localStorage.setItem('data', JSON.stringify(data));
-    liveBetting.init(data);
+    if (!window.localStorage.getItem('data')) {
+        window.localStorage.setItem('data', JSON.stringify(data));
+    }
+
+    liveBetting.start(data);
 };
