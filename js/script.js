@@ -13,6 +13,7 @@ LiveBetting = function (url, callback) {
     var groups = [];
     var markup = '';
     var counter = 0;
+    var sportIcon;
 
     /**
      * construct (private)
@@ -61,6 +62,19 @@ LiveBetting = function (url, callback) {
      * @returns {object} data
      */
     function getGame(index) {
+        liveEvents = [];
+
+        if (liveEvents.length === 0) {
+            return {
+                id: '',
+                name: 'Sorry, no data available',
+                home: '',
+                away: '',
+                date: '',
+                src: function () { return '' }
+            }
+        }
+
         return {
             id: liveEvents[index].event.id,
             name: liveEvents[index].event.name,
@@ -134,7 +148,7 @@ LiveBetting = function (url, callback) {
      */
     function createInterval() {
         var interval = setInterval(function () {
-            animateCards();
+            //animateCards();
             counter += 3500;
 
             if (counter > 120000) {
@@ -200,13 +214,13 @@ LiveBetting = function (url, callback) {
      */
     function render() {
         markup = '';
+        sportIcon = liveEvents.length ? '<img class="sport-icon" src="' + getGame(i).src() + '" />' : '';
 
         for (var i = 0; i < 2; i++) {
             markup +=
                 '<div class="card">' +
                 '<span class="score">' + getGame(i).home + ' – ' + getGame(i).away + '</span>' +
-                '<div class="game">' +
-                '<img class="sport-icon" src="' + getGame(i).src() + '" alt="sport-icon" />' +
+                '<div class="game">' + sportIcon +
                 '<span class="name">' + getGame(i).name + '</span>' +
                 '</div>' +
                 '<span class="date">' + getGame(i).date + '</span>' +

@@ -13,22 +13,13 @@ LiveBetting = function (url, callback) {
     var groups = [];
     var markup = '';
     var counter = 0;
+    var sportIcon;
+    var bettingBtn;
 
     /**
-     * construct (private)
-     * Sets up initial application parameters
-     * and utility functions
-     * @returns {void}
-     */
-    function construct(data) {
-        liveEvents = data.liveEvents;
-        groups = data.group;
-    }
-
-    /**
-     * construct (private)
-     * Sets up initial application parameters
-     * and utility functions
+     * getGameDAte (private)
+     * Formats game-date
+     * @param {object} date
      * @returns {string}
      */
     function getGameDate(date) {
@@ -36,9 +27,9 @@ LiveBetting = function (url, callback) {
     }
 
     /**
-     * construct (private)
-     * Sets up initial application parameters
-     * and utility functions
+     * getSport (private)
+     * Gets available sport or default
+     * @param {string} sport
      * @returns {string}
      */
     function getSport(sport) {
@@ -46,38 +37,54 @@ LiveBetting = function (url, callback) {
     }
 
     /**
-     * construct (private)
-     * Sets up initial application parameters
-     * and utility functions
-     * @returns {boolean}
+     * gameIsToday (private)
+     * Calculates if game is today or not
+     * @param {object} date
+     * @returns {string}
      */
     function gameIsToday(date) {
         return new Date().getDate() === new Date(date).getDate();
     }
 
     /**
-     * requestData (private)
-     * Request game-data from unibet api
-     * @returns {object} data
+     * getGame (private)
+     * Sets up game-object with data for rendering
+     * @param {number} index
+     * @returns {object}
      */
     function getGame(index) {
-        return {
-            id: liveEvents[index].event.id,
-            name: liveEvents[index].event.name,
-            home: liveEvents[index].liveData.score.home,
-            away: liveEvents[index].liveData.score.away,
-            sport: getSport(liveEvents[index].event.sport.toLowerCase()),
-            date: getGameDate(new Date(liveEvents[index].event.start)),
-            src: function () {
-                return './images/icons/' + this.sport + '.png'
+        var gameObject;
+
+        if (liveEvents.length === 0) {
+            gameObject = {
+                id: '',
+                name: 'Sorry, no data available',
+                home: '',
+                away: '',
+                date: '',
+                src: function () { return '' }
             }
-        };
+        } else {
+            gameObject = {
+                id: liveEvents[index].event.id,
+                name: liveEvents[index].event.name,
+                home: liveEvents[index].liveData.score.home,
+                away: liveEvents[index].liveData.score.away,
+                sport: getSport(liveEvents[index].event.sport.toLowerCase()),
+                date: getGameDate(new Date(liveEvents[index].event.start)),
+                src: function () {
+                    return './images/icons/' + this.sport + '.png'
+                }
+            };
+        }
+
+        return gameObject;
     }
 
     /**
-     * requestData (private)
-     * Request game-data from unibet api
-     * @returns {object} data
+     * getTimeFormat (private)
+     * @param {object} date
+     * @returns {string}
      */
     function getTimeFormat(date) {
         return date.toLocaleTimeString(navigator.language, {hour: '2-digit', minute: '2-digit'});
@@ -133,6 +140,10 @@ LiveBetting = function (url, callback) {
      * @returns {object} event
      */
     function createInterval() {
+        if (liveEvents.length === 0) {
+            return;
+        }
+
         var interval = setInterval(function () {
             animateCards();
             counter += 3500;
@@ -202,15 +213,21 @@ LiveBetting = function (url, callback) {
         markup = '';
 
         for (var i = 0; i < 2; i++) {
+            if (liveEvents.length > 0) {
+                sportIcon = '<img class="sport-icon" src="' + getGame(i).src() + '" />';
+                bettingBtn = '<a href="' + rootUrl + '/' + getGame(i).id + '" target="blank" class="betting-btn">Place a bet</a>';
+            } else {
+                sportIcon = '';
+                bettingBtn = '';
+            }
+
             markup +=
                 '<div class="card">' +
                 '<span class="score">' + getGame(i).home + ' – ' + getGame(i).away + '</span>' +
-                '<div class="game">' +
-                '<img class="sport-icon" src="' + getGame(i).src() + '" alt="sport-icon" />' +
+                '<div class="game">' + sportIcon +
                 '<span class="name">' + getGame(i).name + '</span>' +
                 '</div>' +
-                '<span class="date">' + getGame(i).date + '</span>' +
-                '<a href="' + rootUrl + '/' + getGame(i).id + '" target="blank" class="betting-btn">Place a bet</a>' +
+                '<span class="date">' + getGame(i).date + '</span>' + bettingBtn +
                 '</div>'
         }
 
@@ -224,7 +241,9 @@ LiveBetting = function (url, callback) {
          * @returns {void}
          */
         init: function (data) {
-            construct(data);
+            liveEvents = data.liveEvents;
+            groups = data.group;
+
             removeCache();
             createInterval();
             render();
