@@ -107,7 +107,7 @@ article aside img {
 }
 .slide-out {
 	margin-left: -655px;
-	transition: all .4s ease;
+	transition: all .5s ease;
 }
 .date {
 	display: block;

@@ -184,7 +184,7 @@ LiveBetting = function (url, callback) {
          * initializes app
          * @returns {void}
          */
-		init: (data) => {
+		init: function (data) {
 			construct(data);
 			removeCache();
             createInterval();
@@ -195,7 +195,7 @@ LiveBetting = function (url, callback) {
          * makes request to fetch data
          * @returns {object} data
          */
-		loadLiveEvents: () => {
+		loadLiveEvents: function () {
 			requestData();
 		}
 	}
