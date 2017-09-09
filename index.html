@@ -39,23 +39,5 @@
     </footer>
 </div>
 <script src="js/script.js"></script>
-<script>
-    const url = 'https://api.unicdn.net/v1/feeds/sportsbook/event/live.jsonp?app_id=ca7871d7&app_key=5371c125b8d99c8f6b5ff9a12de8b85a';
-    const liveBetting = new LiveBetting(url, 'liveCallback');
-    const cache = window.localStorage.getItem('data');
-
-    // If cached data initialize app,
-    // otherwise make api request to fetch data
-    cache
-        ? liveBetting.init(JSON.parse(cache))
-        : liveBetting.loadLiveEvents();
-
-    // request-callback
-    // cache data and initialize app
-    let liveCallback = function (data) {
-        window.localStorage.setItem('data', JSON.stringify(data));
-        liveBetting.init(data);
-    };
-</script>
 </body>
 </html>
