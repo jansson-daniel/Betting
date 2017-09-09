@@ -23,27 +23,66 @@ LiveBetting = function (url, callback) {
     function construct (data) {
         liveEvents = data.liveEvents;
         groups = data.group;
+    }
 
-        // If game is today, show today label, otherwise date-format
-        this.getGameDate = date => this.gameIsToday(date) ? `Today,  ${this.getTimeFormat(date)}` : `${getDateFormat(date)}, ${this.getTimeFormat(date) }`;
-        // Show name of sport if available, otherwise 'default'
-        this.getSport = sport => availableSports.indexOf(sport) > -1 ? sport : 'default';
-        // Compare game-date with today's date
-        this.gameIsToday = date => new Date().getDate() === new Date(date).getDate();
-        // Create time format
-        this.getTimeFormat = date => date.toLocaleTimeString(navigator.language, { hour: '2-digit', minute:'2-digit' });
+    /**
+     * construct (private)
+     * Sets up initial application parameters
+     * and utility functions
+     * @returns {string}
+     */
+    function getGameDate(date) {
+        return gameIsToday(date) ? 'Today, ' + getTimeFormat(date) : getDateFormat(date) + ', ' + getTimeFormat(date);
+    }
 
-        // Create game object
-        this.getGame = index => ({
+    /**
+     * construct (private)
+     * Sets up initial application parameters
+     * and utility functions
+     * @returns {string}
+     */
+    function getSport(sport) {
+        return availableSports.indexOf(sport) > -1 ? sport : 'default';
+    }
+
+    /**
+     * construct (private)
+     * Sets up initial application parameters
+     * and utility functions
+     * @returns {boolean}
+     */
+    function gameIsToday(date) {
+        return new Date().getDate() === new Date(date).getDate();
+    }
+
+    /**
+     * requestData (private)
+     * Request game-data from unibet api
+     * @returns {object} data
+     */
+    function getGame(index) {
+        return {
             id: liveEvents[index].event.id,
             name: liveEvents[index].event.name,
             home: liveEvents[index].liveData.score.home,
             away: liveEvents[index].liveData.score.away,
-            sport: this.getSport(liveEvents[index].event.sport.toLowerCase()),
-            date: this.getGameDate(new Date(liveEvents[index].event.start)),
-            src: function () { return `./images/icons/${ this.sport }.png` }
-        });
+            sport: getSport(liveEvents[index].event.sport.toLowerCase()),
+            date: getGameDate(new Date(liveEvents[index].event.start)),
+            src: function () {
+                return `./images/icons/${ this.sport }.png`
+            }
+        };
     }
+
+    /**
+     * requestData (private)
+     * Request game-data from unibet api
+     * @returns {object} data
+     */
+    function getTimeFormat(date) {
+        return date.toLocaleTimeString(navigator.language, { hour: '2-digit', minute:'2-digit' });
+    }
+
 
     /**
      * requestData (private)
@@ -162,17 +201,17 @@ LiveBetting = function (url, callback) {
     function render () {
         markup = '';
 
-        for (let i = 0; i < 2; i++) {
+        for (var i = 0; i < 2; i++) {
             markup +=
-                `<div class="card">
-					<span class="score">${this.getGame(i).home} – ${this.getGame(i).away}</span>
-					<div class="game">
-						<img class="sport-icon" src="${this.getGame(i).src()}" alt="sport-icon" />
-						<span class="name">${this.getGame(i).name}</span>
-					</div>
-					<span class="date">${this.getGame(i).date}</span>
-					<a href="${rootUrl}/${this.getGame(i).id}" target="blank" class="betting-btn">Place a bet</a>
-				</div>`
+                '<div class="card">' +
+					'<span class="score">' + getGame(i).home + ' – ' + getGame(i).away + '</span>' +
+					'<div class="game">' +
+						'<img class="sport-icon" src="' + getGame(i).src() + '" alt="sport-icon" />' +
+						'<span class="name">' + getGame(i).name + '</span>' +
+					'</div>' +
+					'<span class="date">' + getGame(i).date + '</span>' +
+					'<a href="' + rootUrl + '/' + getGame(i).id + '" target="blank" class="betting-btn">Place a bet</a>' +
+				'</div>'
         }
 
         wrapper.innerHTML = markup;
@@ -184,7 +223,7 @@ LiveBetting = function (url, callback) {
          * initializes app
          * @returns {void}
          */
-        init: (data) => {
+        init: function (data) {
             construct(data);
             removeCache();
             createInterval();
@@ -195,7 +234,7 @@ LiveBetting = function (url, callback) {
          * makes request to fetch data
          * @returns {object} data
          */
-        loadLiveEvents: () => {
+        loadLiveEvents: function () {
             requestData();
         }
     }

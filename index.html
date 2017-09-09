@@ -53,7 +53,7 @@
 
     // request-callback
     // cache data and initialize app
-    let liveCallback = (data) => {
+    let liveCallback = function (data) {
         window.localStorage.setItem('data', JSON.stringify(data));
         liveBetting.init(data);
     };
