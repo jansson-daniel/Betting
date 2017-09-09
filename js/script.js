@@ -1,106 +1,161 @@
+/**
+ * Name: LiveBetting
+ * Author: Daniel Jansson
+ * Date: 2017-09-09
+ * Description: a time-betting application
+ */
 LiveBetting = function (url, callback) {
-	var liveEvents = [];
-	var groups = [];
-	var activeCard = 0;
-	var wrapper = document.getElementById('wrapper');
+    const availableSports = ['tennis', 'football', 'basketball'];
+    const wrapper = document.getElementById('wrapper');
 
-	function setEvents (data) {
-		liveEvents = data.liveEvents;
-		groups = data.groups;
+    let liveEvents = [];
+    let markup = '';
+    let counter = 0;
+
+    /**
+     * Sets up initial application parameters
+     * and event-listener on start-button
+     * @returns {void}
+     */
+	function construct (data) {
+        liveEvents = data.liveEvents;
+
+        // If today, show today label, otherwise date-format
+        this.getGameDate = date => this.gameIsToday(date) ? `Today,  ${this.getTimeFormat(date)}` : `${getDateFormat(date)}, ${this.getTimeFormat(date) }`;
+        // Show name of sport if available, otherwise 'default'
+        this.getSport = sport => availableSports.indexOf(sport) > -1 ? sport : 'default';
+        // Compare game-date with today's date
+        this.gameIsToday = date => new Date().getDate() === new Date(date).getDate();
+        // Create time format
+        this.getTimeFormat = date => date.toLocaleTimeString(navigator.language, { hour: '2-digit', minute:'2-digit' });
+
+        // Create game object
+        this.getGame = index => ({
+            name: liveEvents[index].event.name,
+            home: liveEvents[index].liveData.score.home,
+            away: liveEvents[index].liveData.score.away,
+            sport: this.getSport(liveEvents[index].event.sport.toLowerCase()),
+            date: this.getGameDate(new Date(liveEvents[index].event.start)),
+            src: function () { return `./images/icons/${ this.sport }.png` }
+        });
 	}
 
+    /**
+     * Start animation of the symbols
+     * to show result visually for user
+     * @returns {object} event
+     */
 	function requestData () {
-		var head = document.head;
-		var script = document.createElement('script');
+        const script = document.createElement('script');
+        const head = document.head;
+
 		script.type = 'text/javascript';
-		script.src = url + '&callback=liveCallback';
+		script.src = `${url}&callback=liveCallback`;
 		head.appendChild(script);
 		head.removeChild(script);
 	}
 
-	function sameDay(date) {
-		return new Date().getDate() === new Date(date).getDate();
-	}
-
-	function getDate (date) {
-		var day = date.getDate(); //Date of the month: 2 in our example
-		var month = date.getMonth(); //Month of the Year: 0-based index, so 1 in our example
-		var year = date.getFullYear();
-
-		if (month < 10) month = '0' + month;
-		if (day < 10) day = '0' + day;
-
-		return year + '/' + month + '/' + day;
-	}
-
-	function renderCards () {
-		var container = document.getElementById('wrapper');
-		var day0 = sameDay(new Date(liveEvents[0].event.start)) ? 'Today, ' + new Date(liveEvents[0].event.start).toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'}) : getDate(new Date(liveEvents[0].event.start)) + ', ' + new Date(liveEvents[0].event.start).toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'});
-		var day1 = sameDay(new Date(liveEvents[1].event.start)) ? 'Today, ' + new Date(liveEvents[1].event.start).toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'}) : getDate(new Date(liveEvents[1].event.start)) + ', ' + new Date(liveEvents[1].event.start).toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'});
-		var sport0 = liveEvents[0].event.sport.toLowerCase();
-		var sport1 = liveEvents[1].event.sport.toLowerCase();
-
-		if (sport0 !== 'tennis' && sport0 !== 'football' && sport0 !=='basketball') {
-			sport0 = 'default';
-		}
-
-		if (sport1 !== 'tennis' && sport1 !== 'football' && sport1 !=='basketball') {
-			sport1 = 'default';
-		}
-
-		var src0 = './images/icons/' + sport0 + '.png';
-		var src1 = './images/icons/' + sport1 + '.png';
-
-		container.innerHTML =
-			'<div class="card">' +
-				'<span class="score">' + liveEvents[0].liveData.score.home + ' – ' + liveEvents[0].liveData.score.away + '</span>' +
-				'<div class="box">' +
-					'<img class="icon" src="' + src0 + '"/>' +
-					'<span class="name">' + liveEvents[0].event.name + '</span>' +
-				'</div>' +
-				'<span class="date">' + day0 + '</span>' +
-				'<button class="bet-btn">Place a bet</button>' +
-			'</div>' +
-			'<div class="card">' +
-				'<span class="score">' + liveEvents[1].liveData.score.home + ' – ' + liveEvents[1].liveData.score.away + '</span>' +
-				'<div class="box">' +
-					'<img class="icon" src="' + src1 + '"/>' +
-					'<span class="name">' + liveEvents[1].event.name + '</span>' +
-				'</div>' +
-				'<span class="date">' + day1 + '</span>' +
-				'<button class="bet-btn">Place a bet</button>' +
-			'</div>'
-	}
-
-	var add = function () {
-		wrapper.innerHTML = '';
-		wrapper.classList.remove('slide-out');
+    /**
+     * Start animation of the symbols
+     * to show result visually for user
+     * @returns {object} event
+     */
+	function showNewGame(event) {
+        event.target.innerHTML = '';
+        event.target.classList.remove('slide-out');
 		liveEvents.push(liveEvents.shift());
-		renderCards();
-	};
-
-	function animateCards () {
-		wrapper.classList.add('slide-out');
-		wrapper.addEventListener('webkitTransitionEnd', add, true);
+		render();
 	}
+
+    /**
+     * Start animation of the symbols
+     * to show result visually for user
+     * @returns {object} event
+     */
+    function getDateFormat (date) {
+        const day = date.getDate() > 9 ? date.getDate() : '0' + date.getDate();
+        const month = date.getMonth() > 9 ? date.getMonth() : '0' + date.getMonth();
+        const year = date.getFullYear();
+
+        return year + '/' + month + '/' + day;
+    }
+
+    /**
+     * Start animation of the symbols
+     * to show result visually for user
+     * @returns {object} event
+     */
+    function createInterval () {
+        const interval = setInterval(() => {
+            animateCards();
+            counter += 3500;
+
+            if (counter > 120000) {
+                counter = 0;
+                clearInterval(interval);
+                requestData();
+            }
+        }, 3500);
+	}
+
+    /**
+     * Start animation of the symbols
+     * to show result visually for user
+     * @returns {object} event
+     */
+    function animateCards () {
+        wrapper.classList.add('slide-out');
+        wrapper.addEventListener('webkitTransitionEnd', showNewGame, false);
+    }
+
+    /**
+     * Start animation of the symbols
+     * to show result visually for user
+     * @returns {object} event
+     */
+    function removeCache () {
+    	let counter = 0;
+    	const interval = setInterval(() => {
+    		counter++;
+			if (counter === 10) {
+				window.localStorage.removeItem('data');
+				clearInterval(interval);
+			}
+		}, 1000);
+	}
+
+    /**
+     * Start animation of the symbols
+     * to show result visually for user
+     * @returns {object} event
+     */
+    function render () {
+    	markup = '';
+
+        for (let i = 0; i < 2; i++) {
+            markup +=
+                `<div class="card">
+					<span class="score">${this.getGame(i).home} – ${this.getGame(i).away}</span>
+					<div class="box">
+						<img class="icon" src="${this.getGame(i).src()}"/>
+						<span class="name">${this.getGame(i).name}</span>
+					</div>
+					<span class="date">${this.getGame(i).date}</span>
+					<button class="bet-btn">Place a bet</button>
+				</div>`
+        }
+
+        wrapper.innerHTML = markup;
+    }
 
 	return {
-		init: function (data) {
-			setEvents(data);
-			renderCards();
-			var counter = 0;
-
-			var interval = setInterval(function () {
-				animateCards();
-				counter += 3500;
-				if (counter > 120000) {
-					counter = 0;
-					clearInterval(interval);
-					requestData();
-				}
-			}, 3500);
+		init: (data) => {
+			construct(data);
+			removeCache();
+            createInterval();
+            render();
 		},
-		loadMatches: function () {
+		loadMatches: () => {
 			requestData();
 		}
 	}
