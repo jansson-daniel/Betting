@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7b2cb88b-6371-40fc-b1d2-8b9f77673177" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/script.js" afterPath="$PROJECT_DIR$/static/js/script.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/script.js" afterPath="$PROJECT_DIR$/js/script.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -32,63 +30,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1315">
-              <caret line="262" column="5" lean-forward="false" selection-start-line="262" selection-start-column="5" selection-end-line="262" selection-end-column="5" />
-              <folding>
-                <marker date="1504961640000" expanded="true" signature="0:117" ph="/** Name: LiveBetting ...*/" />
-                <marker date="1504961640000" expanded="true" signature="157:7045" ph="{...}" />
-                <marker date="1504961640000" expanded="true" signature="454:590" ph="/** construct (private) ...*/" />
-                <marker date="1504961640000" expanded="true" signature="620:694" ph="{...}" />
-                <marker date="1504961640000" expanded="true" signature="700:838" ph="/** construct (private) ...*/" />
-                <marker date="1504961640000" expanded="true" signature="870:996" ph="{...}" />
-                <marker date="1504961640000" expanded="true" signature="1002:1140" ph="/** construct (private) ...*/" />
-                <marker date="1504961640000" expanded="true" signature="1170:1249" ph="{...}" />
-                <marker date="1504961640000" expanded="true" signature="1255:1394" ph="/** construct (private) ...*/" />
-                <marker date="1504961640000" expanded="true" signature="1426:1499" ph="{...}" />
-                <marker date="1504961640000" expanded="true" signature="1505:1616" ph="/** requestData (private) ...*/" />
-                <marker date="1504961640000" expanded="true" signature="1645:2450" ph="{...}" />
-                <marker date="1504961640000" expanded="true" signature="1710:1955" ph="{...}" />
-                <marker date="1504961640000" expanded="true" signature="1731:1945" ph="{&quot;id&quot;: ''...}" />
-                <marker date="1504961640000" expanded="true" signature="1972:2443" ph="{...}" />
-                <marker date="1504961640000" expanded="true" signature="2355:2433" ph="{...}" />
-                <marker date="1504961640000" expanded="true" signature="2456:2567" ph="/** requestData (private) ...*/" />
-                <marker date="1504961640000" expanded="true" signature="2601:2706" ph="{...}" />
-                <marker date="1504961640000" expanded="true" signature="2713:2824" ph="/** requestData (private) ...*/" />
-                <marker date="1504961640000" expanded="true" signature="2852:3111" ph="{...}" />
-                <marker date="1504961640000" expanded="true" signature="3117:3247" ph="/** showNewGame (private) ...*/" />
-                <marker date="1504961640000" expanded="true" signature="3280:3439" ph="{...}" />
-                <marker date="1504961640000" expanded="true" signature="3445:3584" ph="/** getDateFormat (private) ...*/" />
-                <marker date="1504961640000" expanded="true" signature="3618:3873" ph="{...}" />
-                <marker date="1504961640000" expanded="true" signature="3879:4031" ph="/** createInterval (private) ...*/" />
-                <marker date="1504961640000" expanded="true" signature="4062:4347" ph="{...}" />
-                <marker date="1504961640000" expanded="true" signature="4111:4333" ph="{...}" />
-                <marker date="1504961640000" expanded="true" signature="4207:4323" ph="{...}" />
-                <marker date="1504961640000" expanded="true" signature="4353:4486" ph="/** whichAnimationEvent (private) ...*/" />
-                <marker date="1504961640000" expanded="true" signature="4522:4974" ph="{...}" />
-                <marker date="1504961640000" expanded="true" signature="4610:4809" ph="{&quot;transition&quot;: 'transitionend'...}" />
-                <marker date="1504961640000" expanded="true" signature="4849:4968" ph="{...}" />
-                <marker date="1504961640000" expanded="true" signature="4902:4958" ph="{...}" />
-                <marker date="1504961640000" expanded="true" signature="4980:5146" ph="/** animateCards (private) ...*/" />
-                <marker date="1504961640000" expanded="true" signature="5175:5302" ph="{...}" />
-                <marker date="1504961640000" expanded="true" signature="5308:5408" ph="/** removeCache (private) ...*/" />
-                <marker date="1504961640000" expanded="true" signature="5436:5705" ph="{...}" />
-                <marker date="1504961640000" expanded="true" signature="5510:5691" ph="{...}" />
-                <marker date="1504961640000" expanded="true" signature="5569:5681" ph="{...}" />
-                <marker date="1504961640000" expanded="true" signature="5711:5799" ph="/** render (private) ...*/" />
-                <marker date="1504961640000" expanded="true" signature="5822:6562" ph="{...}" />
-                <marker date="1504961640000" expanded="true" signature="5988:6519" ph="{...}" />
-                <marker date="1504961640000" expanded="true" signature="6575:7043" ph="{...}" />
-                <marker date="1504961640000" expanded="true" signature="6585:6679" ph="/** init (public) ...*/" />
-                <marker date="1504961640000" expanded="true" signature="6710:6829" ph="{...}" />
-                <marker date="1504961640000" expanded="true" signature="6839:6962" ph="/** loadLiveEvents (public) ...*/" />
-                <marker date="1504961640000" expanded="true" signature="6999:7037" ph="{...}" />
-                <marker date="1504961640000" expanded="true" signature="7284:7361" ph="//..." />
-                <marker date="1504961640000" expanded="true" signature="7447:7499" ph="//..." />
-                <marker date="1504961640000" expanded="true" signature="7535:7629" ph="{...}" />
-              </folding>
+            <state relative-caret-position="909">
+              <caret line="282" column="2" lean-forward="false" selection-start-line="282" selection-start-column="2" selection-end-line="282" selection-end-column="2" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -119,11 +66,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/js/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="935">
-              <caret line="276" column="0" lean-forward="true" selection-start-line="276" selection-start-column="0" selection-end-line="276" selection-end-column="0" />
+            <state relative-caret-position="452">
+              <caret line="255" column="34" lean-forward="true" selection-start-line="255" selection-start-column="34" selection-end-line="255" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -143,7 +90,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>activeCard</find>
       <find>console</find>
       <find>remove</find>
       <find>box</find>
@@ -173,6 +119,7 @@
       <find>groups</find>
       <find>counter</find>
       <find>foo</find>
+      <find>console.log</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -188,8 +135,8 @@
         <option value="$PROJECT_DIR$/.babelrc" />
         <option value="$PROJECT_DIR$/static/css/main.css" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/js/script.js" />
         <option value="$PROJECT_DIR$/static/js/script.js" />
+        <option value="$PROJECT_DIR$/js/script.js" />
       </list>
     </option>
   </component>
@@ -491,7 +438,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70585000" />
+    <option name="totallyTimeSpent" value="70674000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="22" y="23" width="1921" height="1173" extended-state="0" />
@@ -567,58 +514,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1978">
           <caret line="86" column="12" lean-forward="true" selection-start-line="86" selection-start-column="12" selection-end-line="86" selection-end-column="12" />
-          <folding>
-            <marker date="1504961640000" expanded="true" signature="0:117" ph="/** Name: LiveBetting ...*/" />
-            <marker date="1504961640000" expanded="true" signature="157:7045" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="454:590" ph="/** construct (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="620:694" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="700:838" ph="/** construct (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="870:996" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="1002:1140" ph="/** construct (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="1170:1249" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="1255:1394" ph="/** construct (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="1426:1499" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="1505:1616" ph="/** requestData (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="1645:2450" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="1710:1955" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="1731:1945" ph="{&quot;id&quot;: ''...}" />
-            <marker date="1504961640000" expanded="true" signature="1972:2443" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="2355:2433" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="2456:2567" ph="/** requestData (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="2601:2706" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="2713:2824" ph="/** requestData (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="2852:3111" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="3117:3247" ph="/** showNewGame (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="3280:3439" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="3445:3584" ph="/** getDateFormat (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="3618:3873" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="3879:4031" ph="/** createInterval (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="4062:4347" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="4111:4333" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="4207:4323" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="4353:4486" ph="/** whichAnimationEvent (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="4522:4974" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="4610:4809" ph="{&quot;transition&quot;: 'transitionend'...}" />
-            <marker date="1504961640000" expanded="true" signature="4849:4968" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="4902:4958" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="4980:5146" ph="/** animateCards (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="5175:5302" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="5308:5408" ph="/** removeCache (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="5436:5705" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="5510:5691" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="5569:5681" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="5711:5799" ph="/** render (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="5822:6562" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="5988:6519" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="6575:7043" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="6585:6679" ph="/** init (public) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="6710:6829" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="6839:6962" ph="/** loadLiveEvents (public) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="6999:7037" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="7284:7361" ph="//..." />
-            <marker date="1504961640000" expanded="true" signature="7447:7499" ph="//..." />
-            <marker date="1504961640000" expanded="true" signature="7535:7629" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -696,58 +592,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="395">
           <caret line="21" column="24" lean-forward="true" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
-          <folding>
-            <marker date="1504961640000" expanded="true" signature="0:117" ph="/** Name: LiveBetting ...*/" />
-            <marker date="1504961640000" expanded="true" signature="157:7045" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="454:590" ph="/** construct (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="620:694" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="700:838" ph="/** construct (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="870:996" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="1002:1140" ph="/** construct (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="1170:1249" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="1255:1394" ph="/** construct (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="1426:1499" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="1505:1616" ph="/** requestData (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="1645:2450" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="1710:1955" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="1731:1945" ph="{&quot;id&quot;: ''...}" />
-            <marker date="1504961640000" expanded="true" signature="1972:2443" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="2355:2433" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="2456:2567" ph="/** requestData (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="2601:2706" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="2713:2824" ph="/** requestData (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="2852:3111" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="3117:3247" ph="/** showNewGame (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="3280:3439" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="3445:3584" ph="/** getDateFormat (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="3618:3873" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="3879:4031" ph="/** createInterval (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="4062:4347" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="4111:4333" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="4207:4323" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="4353:4486" ph="/** whichAnimationEvent (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="4522:4974" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="4610:4809" ph="{&quot;transition&quot;: 'transitionend'...}" />
-            <marker date="1504961640000" expanded="true" signature="4849:4968" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="4902:4958" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="4980:5146" ph="/** animateCards (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="5175:5302" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="5308:5408" ph="/** removeCache (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="5436:5705" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="5510:5691" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="5569:5681" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="5711:5799" ph="/** render (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="5822:6562" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="5988:6519" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="6575:7043" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="6585:6679" ph="/** init (public) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="6710:6829" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="6839:6962" ph="/** loadLiveEvents (public) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="6999:7037" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="7284:7361" ph="//..." />
-            <marker date="1504961640000" expanded="true" signature="7447:7499" ph="//..." />
-            <marker date="1504961640000" expanded="true" signature="7535:7629" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -798,58 +643,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1978">
           <caret line="86" column="12" lean-forward="true" selection-start-line="86" selection-start-column="12" selection-end-line="86" selection-end-column="12" />
-          <folding>
-            <marker date="1504961640000" expanded="true" signature="0:117" ph="/** Name: LiveBetting ...*/" />
-            <marker date="1504961640000" expanded="true" signature="157:7045" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="454:590" ph="/** construct (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="620:694" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="700:838" ph="/** construct (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="870:996" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="1002:1140" ph="/** construct (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="1170:1249" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="1255:1394" ph="/** construct (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="1426:1499" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="1505:1616" ph="/** requestData (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="1645:2450" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="1710:1955" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="1731:1945" ph="{&quot;id&quot;: ''...}" />
-            <marker date="1504961640000" expanded="true" signature="1972:2443" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="2355:2433" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="2456:2567" ph="/** requestData (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="2601:2706" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="2713:2824" ph="/** requestData (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="2852:3111" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="3117:3247" ph="/** showNewGame (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="3280:3439" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="3445:3584" ph="/** getDateFormat (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="3618:3873" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="3879:4031" ph="/** createInterval (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="4062:4347" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="4111:4333" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="4207:4323" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="4353:4486" ph="/** whichAnimationEvent (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="4522:4974" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="4610:4809" ph="{&quot;transition&quot;: 'transitionend'...}" />
-            <marker date="1504961640000" expanded="true" signature="4849:4968" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="4902:4958" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="4980:5146" ph="/** animateCards (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="5175:5302" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="5308:5408" ph="/** removeCache (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="5436:5705" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="5510:5691" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="5569:5681" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="5711:5799" ph="/** render (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="5822:6562" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="5988:6519" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="6575:7043" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="6585:6679" ph="/** init (public) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="6710:6829" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="6839:6962" ph="/** loadLiveEvents (public) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="6999:7037" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="7284:7361" ph="//..." />
-            <marker date="1504961640000" expanded="true" signature="7447:7499" ph="//..." />
-            <marker date="1504961640000" expanded="true" signature="7535:7629" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -925,58 +719,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="230">
           <caret line="15" column="59" lean-forward="true" selection-start-line="15" selection-start-column="59" selection-end-line="15" selection-end-column="59" />
-          <folding>
-            <marker date="1504961640000" expanded="true" signature="0:117" ph="/** Name: LiveBetting ...*/" />
-            <marker date="1504961640000" expanded="true" signature="157:7045" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="454:590" ph="/** construct (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="620:694" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="700:838" ph="/** construct (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="870:996" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="1002:1140" ph="/** construct (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="1170:1249" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="1255:1394" ph="/** construct (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="1426:1499" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="1505:1616" ph="/** requestData (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="1645:2450" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="1710:1955" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="1731:1945" ph="{&quot;id&quot;: ''...}" />
-            <marker date="1504961640000" expanded="true" signature="1972:2443" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="2355:2433" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="2456:2567" ph="/** requestData (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="2601:2706" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="2713:2824" ph="/** requestData (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="2852:3111" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="3117:3247" ph="/** showNewGame (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="3280:3439" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="3445:3584" ph="/** getDateFormat (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="3618:3873" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="3879:4031" ph="/** createInterval (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="4062:4347" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="4111:4333" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="4207:4323" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="4353:4486" ph="/** whichAnimationEvent (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="4522:4974" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="4610:4809" ph="{&quot;transition&quot;: 'transitionend'...}" />
-            <marker date="1504961640000" expanded="true" signature="4849:4968" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="4902:4958" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="4980:5146" ph="/** animateCards (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="5175:5302" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="5308:5408" ph="/** removeCache (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="5436:5705" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="5510:5691" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="5569:5681" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="5711:5799" ph="/** render (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="5822:6562" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="5988:6519" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="6575:7043" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="6585:6679" ph="/** init (public) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="6710:6829" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="6839:6962" ph="/** loadLiveEvents (public) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="6999:7037" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="7284:7361" ph="//..." />
-            <marker date="1504961640000" expanded="true" signature="7447:7499" ph="//..." />
-            <marker date="1504961640000" expanded="true" signature="7535:7629" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1025,58 +768,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1978">
           <caret line="86" column="12" lean-forward="true" selection-start-line="86" selection-start-column="12" selection-end-line="86" selection-end-column="12" />
-          <folding>
-            <marker date="1504961640000" expanded="true" signature="0:117" ph="/** Name: LiveBetting ...*/" />
-            <marker date="1504961640000" expanded="true" signature="157:7045" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="454:590" ph="/** construct (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="620:694" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="700:838" ph="/** construct (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="870:996" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="1002:1140" ph="/** construct (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="1170:1249" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="1255:1394" ph="/** construct (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="1426:1499" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="1505:1616" ph="/** requestData (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="1645:2450" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="1710:1955" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="1731:1945" ph="{&quot;id&quot;: ''...}" />
-            <marker date="1504961640000" expanded="true" signature="1972:2443" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="2355:2433" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="2456:2567" ph="/** requestData (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="2601:2706" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="2713:2824" ph="/** requestData (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="2852:3111" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="3117:3247" ph="/** showNewGame (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="3280:3439" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="3445:3584" ph="/** getDateFormat (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="3618:3873" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="3879:4031" ph="/** createInterval (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="4062:4347" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="4111:4333" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="4207:4323" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="4353:4486" ph="/** whichAnimationEvent (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="4522:4974" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="4610:4809" ph="{&quot;transition&quot;: 'transitionend'...}" />
-            <marker date="1504961640000" expanded="true" signature="4849:4968" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="4902:4958" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="4980:5146" ph="/** animateCards (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="5175:5302" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="5308:5408" ph="/** removeCache (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="5436:5705" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="5510:5691" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="5569:5681" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="5711:5799" ph="/** render (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="5822:6562" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="5988:6519" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="6575:7043" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="6585:6679" ph="/** init (public) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="6710:6829" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="6839:6962" ph="/** loadLiveEvents (public) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="6999:7037" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="7284:7361" ph="//..." />
-            <marker date="1504961640000" expanded="true" signature="7447:7499" ph="//..." />
-            <marker date="1504961640000" expanded="true" signature="7535:7629" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1140,69 +832,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/script.js">
+    <entry file="file://$PROJECT_DIR$/static/js/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1315">
-          <caret line="262" column="5" lean-forward="false" selection-start-line="262" selection-start-column="5" selection-end-line="262" selection-end-column="5" />
-          <folding>
-            <marker date="1504961640000" expanded="true" signature="0:117" ph="/** Name: LiveBetting ...*/" />
-            <marker date="1504961640000" expanded="true" signature="157:7045" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="454:590" ph="/** construct (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="620:694" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="700:838" ph="/** construct (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="870:996" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="1002:1140" ph="/** construct (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="1170:1249" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="1255:1394" ph="/** construct (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="1426:1499" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="1505:1616" ph="/** requestData (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="1645:2450" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="1710:1955" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="1731:1945" ph="{&quot;id&quot;: ''...}" />
-            <marker date="1504961640000" expanded="true" signature="1972:2443" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="2355:2433" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="2456:2567" ph="/** requestData (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="2601:2706" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="2713:2824" ph="/** requestData (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="2852:3111" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="3117:3247" ph="/** showNewGame (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="3280:3439" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="3445:3584" ph="/** getDateFormat (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="3618:3873" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="3879:4031" ph="/** createInterval (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="4062:4347" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="4111:4333" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="4207:4323" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="4353:4486" ph="/** whichAnimationEvent (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="4522:4974" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="4610:4809" ph="{&quot;transition&quot;: 'transitionend'...}" />
-            <marker date="1504961640000" expanded="true" signature="4849:4968" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="4902:4958" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="4980:5146" ph="/** animateCards (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="5175:5302" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="5308:5408" ph="/** removeCache (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="5436:5705" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="5510:5691" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="5569:5681" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="5711:5799" ph="/** render (private) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="5822:6562" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="5988:6519" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="6575:7043" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="6585:6679" ph="/** init (public) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="6710:6829" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="6839:6962" ph="/** loadLiveEvents (public) ...*/" />
-            <marker date="1504961640000" expanded="true" signature="6999:7037" ph="{...}" />
-            <marker date="1504961640000" expanded="true" signature="7284:7361" ph="//..." />
-            <marker date="1504961640000" expanded="true" signature="7447:7499" ph="//..." />
-            <marker date="1504961640000" expanded="true" signature="7535:7629" ph="{...}" />
-          </folding>
+        <state relative-caret-position="452">
+          <caret line="255" column="34" lean-forward="true" selection-start-line="255" selection-start-column="34" selection-end-line="255" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/script.js">
+    <entry file="file://$PROJECT_DIR$/js/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="935">
-          <caret line="276" column="0" lean-forward="true" selection-start-line="276" selection-start-column="0" selection-end-line="276" selection-end-column="0" />
+        <state relative-caret-position="909">
+          <caret line="282" column="2" lean-forward="false" selection-start-line="282" selection-start-column="2" selection-end-line="282" selection-end-column="2" />
           <folding />
         </state>
       </provider>
