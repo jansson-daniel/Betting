@@ -76,7 +76,7 @@ LiveBetting = function (url, callback) {
     function getTimeFormat (date) {
         var time = date.toLocaleTimeString('sv-SE', {hour: '2-digit', minute: '2-digit', hour12: false});
         time.replace(/\u200E/g, '');
-        time = time.replace(/^([^\d]*\d{1,2}:\d{1,2}):\d{1,2}([^\d]*)$/, '$1$2');
+        time.replace(/^([^\d]*\d{1,2}:\d{1,2}):\d{1,2}([^\d]*)$/, '$1$2');
         return time;
     }
 
