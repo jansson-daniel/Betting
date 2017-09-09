@@ -5,8 +5,8 @@
  * Description: a live time-betting application
  */
 LiveBetting = function (url, callback) {
-    var availableSports = ['tennis', 'football', 'basketball'];
     var wrapper = document.getElementById('wrapper');
+    var availableSports = ['tennis', 'football', 'basketball'];
     var rootUrl = 'https://www.unibet.com/betting#/event/live';
     var liveEvents = [];
     var sportIcon;
