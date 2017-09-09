@@ -91,13 +91,7 @@ window.onload = (function (window) {
          * @returns {object} data
          */
         function requestData() {
-            const script = document.createElement('script');
-            const head = document.head;
 
-            script.type = 'text/javascript';
-            script.src = url + '&callback=liveCallback';
-            head.appendChild(script);
-            head.removeChild(script);
         }
 
         /**
@@ -247,6 +241,14 @@ window.onload = (function (window) {
         window.localStorage.setItem('data', JSON.stringify(data));
         liveBetting.init(data);
     };
+
+    var script = document.createElement('script');
+    var head = document.head;
+
+    script.type = 'text/javascript';
+    script.src = url + '&callback=liveCallback';
+    head.appendChild(script);
+    head.removeChild(script);
 
     var url = 'https://api.unicdn.net/v1/feeds/sportsbook/event/live.jsonp?app_id=ca7871d7&app_key=5371c125b8d99c8f6b5ff9a12de8b85a';
     var liveBetting = new LiveBetting(url, 'liveCallback');
