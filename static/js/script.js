@@ -4,7 +4,7 @@
  * Date: 2017-09-09
  * Description: a time-betting application
  */
-window.LiveBetting = (url, callback) => {
+LiveBetting = (url, callback) => {
     const availableSports = ['tennis', 'football', 'basketball'];
     const wrapper = document.getElementById('wrapper');
     const rootUrl = 'https://www.unibet.com/betting#/event/live';

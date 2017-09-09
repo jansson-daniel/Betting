@@ -45,6 +45,8 @@
     const liveBetting = new LiveBetting(url, 'liveCallback');
     const cache = window.localStorage.getItem('data');
 
+    console.log(window);
+    
     // If cached data initialize app,
     // otherwise make api request to fetch data
     cache
