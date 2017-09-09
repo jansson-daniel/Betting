@@ -184,7 +184,7 @@ LiveBetting = function (url, callback) {
          * initializes app
          * @returns {void}
          */
-		initTest: (data) => {
+		init: (data) => {
 			construct(data);
 			removeCache();
             createInterval();
