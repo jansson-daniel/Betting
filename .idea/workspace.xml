@@ -31,11 +31,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="241" column="6" lean-forward="true" selection-start-line="241" selection-start-column="6" selection-end-line="241" selection-end-column="6" />
+            <state relative-caret-position="480">
+              <caret line="252" column="19" lean-forward="true" selection-start-line="252" selection-start-column="19" selection-end-line="252" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -66,11 +66,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/js/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
-              <caret line="227" column="21" lean-forward="false" selection-start-line="227" selection-start-column="16" selection-end-line="227" selection-end-column="21" />
+            <state relative-caret-position="250">
+              <caret line="246" column="25" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="257" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -129,8 +129,8 @@
         <option value="$PROJECT_DIR$/.babelrc" />
         <option value="$PROJECT_DIR$/static/css/main.css" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/js/script.js" />
         <option value="$PROJECT_DIR$/static/js/script.js" />
+        <option value="$PROJECT_DIR$/js/script.js" />
       </list>
     </option>
   </component>
@@ -432,7 +432,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62444000" />
+    <option name="totallyTimeSpent" value="63171000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="401" y="23" width="1921" height="1173" extended-state="0" />
@@ -823,18 +823,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/script.js">
+    <entry file="file://$PROJECT_DIR$/static/js/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="241" column="6" lean-forward="true" selection-start-line="241" selection-start-column="6" selection-end-line="241" selection-end-column="6" />
+        <state relative-caret-position="250">
+          <caret line="246" column="25" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="257" selection-end-column="2" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/script.js">
+    <entry file="file://$PROJECT_DIR$/js/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="227" column="21" lean-forward="false" selection-start-line="227" selection-start-column="16" selection-end-line="227" selection-end-column="21" />
+        <state relative-caret-position="480">
+          <caret line="252" column="19" lean-forward="true" selection-start-line="252" selection-start-column="19" selection-end-line="252" selection-end-column="19" />
           <folding />
         </state>
       </provider>
