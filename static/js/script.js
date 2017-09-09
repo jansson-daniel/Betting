@@ -10,41 +10,8 @@ LiveBetting = function (url, callback) {
     var rootUrl = 'https://www.unibet.com/betting#/event/live';
 
     var liveEvents = [];
-    var groups = [];
-    var markup = '';
-    var counter = 0;
     var sportIcon;
     var bettingBtn;
-
-    /**
-     * getGameDAte (private)
-     * Formats game-date
-     * @param {object} date
-     * @returns {string}
-     */
-    function getGameDate(date) {
-        return gameIsToday(date) ? 'Today, ' + getTimeFormat(date) : getDateFormat(date) + ', ' + getTimeFormat(date);
-    }
-
-    /**
-     * getSport (private)
-     * Gets available sport or default
-     * @param {string} sport
-     * @returns {string}
-     */
-    function getSport(sport) {
-        return availableSports.indexOf(sport) > -1 ? sport : 'default';
-    }
-
-    /**
-     * gameIsToday (private)
-     * Calculates if game is today or not
-     * @param {object} date
-     * @returns {string}
-     */
-    function gameIsToday(date) {
-        return new Date().getDate() === new Date(date).getDate();
-    }
 
     /**
      * getGame (private)
@@ -82,7 +49,28 @@ LiveBetting = function (url, callback) {
     }
 
     /**
+     * getGameDAte (private)
+     * Formats game-date
+     * @param {object} date
+     * @returns {string}
+     */
+    function getGameDate(date) {
+        return gameIsToday(date) ? 'Today, ' + getTimeFormat(date) : getDateFormat(date) + ', ' + getTimeFormat(date);
+    }
+
+    /**
+     * getSport (private)
+     * Gets available sport or default
+     * @param {string} sport
+     * @returns {string}
+     */
+    function getSport(sport) {
+        return availableSports.indexOf(sport) > -1 ? sport : 'default';
+    }
+
+    /**
      * getTimeFormat (private)
+     * Converts date object to formatted time
      * @param {object} date
      * @returns {string}
      */
@@ -90,11 +78,34 @@ LiveBetting = function (url, callback) {
         return date.toLocaleTimeString(navigator.language, {hour: '2-digit', minute: '2-digit'});
     }
 
+    /**
+     * getDateFormat (private)
+     * Converts date object to formatted date
+     * @param {object} date
+     * @returns {string} date-format
+     */
+    function getDateFormat(date) {
+        var day = date.getDate() > 9 ? date.getDate() : '0' + date.getDate();
+        var month = date.getMonth() > 9 ? date.getMonth() : '0' + date.getMonth();
+        var year = date.getFullYear();
+
+        return year + '/' + month + '/' + day;
+    }
+
+    /**
+     * gameIsToday (private)
+     * Calculates if game started today or not
+     * @param {object} date
+     * @returns {boolean}
+     */
+    function gameIsToday(date) {
+        return new Date().getDate() === new Date(date).getDate();
+    }
 
     /**
      * requestData (private)
-     * Request game-data from unibet api
-     * @returns {object} data
+     * Request game-data from Unitbet Api
+     * @returns {object} live data
      */
     function requestData() {
         var script = document.createElement('script');
@@ -120,40 +131,25 @@ LiveBetting = function (url, callback) {
     }
 
     /**
-     * getDateFormat (private)
-     * Get date-format for game
-     * @param {object} date
-     * @returns {string} date-format
-     */
-    function getDateFormat(date) {
-        var day = date.getDate() > 9 ? date.getDate() : '0' + date.getDate();
-        var month = date.getMonth() > 9 ? date.getMonth() : '0' + date.getMonth();
-        var year = date.getFullYear();
-
-        return year + '/' + month + '/' + day;
-    }
-
-    /**
      * createInterval (private)
      * Start animation of the symbols
      * to show result visually for user
      * @returns {object} event
      */
     function createInterval() {
-        if (liveEvents.length === 0) {
-            return;
+        if (liveEvents.length > 0) {
+            var interval = setInterval(function () {
+                var storage = window.localStorage.getItem('data');
+                animateCards();
+
+                // Only request data from Api
+                // if no cached data (2 min from page-load)
+                if (!storage) {
+                    clearInterval(interval);
+                    requestData();
+                }
+            }, 3500);
         }
-
-        var interval = setInterval(function () {
-            animateCards();
-            counter += 3500;
-
-            if (counter > 120000) {
-                counter = 0;
-                clearInterval(interval);
-                requestData();
-            }
-        }, 3500);
     }
 
     /**
@@ -179,7 +175,7 @@ LiveBetting = function (url, callback) {
 
     /**
      * animateCards (private)
-     * Start animation of the game-cards
+     * Starts animation of game cards
      * Call showNewCame when animation ends to show new card
      * @returns {void}
      */
@@ -197,7 +193,8 @@ LiveBetting = function (url, callback) {
         var counter = 0;
         var interval = setInterval(function () {
             counter++;
-            if (counter === 12e4) {
+            // remove cached data 2 minutes after page-load
+            if (counter === 120) {
                 window.localStorage.removeItem('data');
                 clearInterval(interval);
             }
@@ -205,29 +202,38 @@ LiveBetting = function (url, callback) {
     }
 
     /**
+     * createIcons (private)
+     * Render elements if live-data exist
+     * @returns {void}
+     */
+    function createIcons (index) {
+        if (liveEvents.length > 0) {
+            sportIcon = '<img class="sport-icon" src="' + getGame(index).src() + '" />';
+            bettingBtn = '<a href="' + rootUrl + '/' + getGame(index).id + '" target="blank" class="betting-btn">Place a bet</a>';
+        } else {
+            sportIcon = '';
+            bettingBtn = '';
+        }
+    }
+
+    /**
      * render (private)
-     * Render cards on screen
+     * Renders cards on screen
      * @returns {void}
      */
     function render() {
-        markup = '';
+        var markup = '';
 
         for (var i = 0; i < 2; i++) {
-            if (liveEvents.length > 0) {
-                sportIcon = '<img class="sport-icon" src="' + getGame(i).src() + '" />';
-                bettingBtn = '<a href="' + rootUrl + '/' + getGame(i).id + '" target="blank" class="betting-btn">Place a bet</a>';
-            } else {
-                sportIcon = '';
-                bettingBtn = '';
-            }
+            createIcons(i);
 
             markup +=
                 '<div class="card">' +
-                '<span class="score">' + getGame(i).home + ' – ' + getGame(i).away + '</span>' +
-                '<div class="game">' + sportIcon +
-                '<span class="name">' + getGame(i).name + '</span>' +
-                '</div>' +
-                '<span class="date">' + getGame(i).date + '</span>' + bettingBtn +
+                    '<span class="score">' + getGame(i).home + ' – ' + getGame(i).away + '</span>' +
+                    '<div class="game">' + sportIcon +
+                        '<span class="name">' + getGame(i).name + '</span>' +
+                    '</div>' +
+                    '<span class="date">' + getGame(i).date + '</span>' + bettingBtn +
                 '</div>'
         }
 
@@ -237,13 +243,11 @@ LiveBetting = function (url, callback) {
     return {
         /**
          * init (public)
-         * initializes app
+         * initializes application
          * @returns {void}
          */
         init: function (data) {
             liveEvents = data.liveEvents;
-            groups = data.group;
-
             removeCache();
             createInterval();
             render();
@@ -265,11 +269,13 @@ var cache = window.localStorage.getItem('data');
 
 // If cached data initialize app,
 // otherwise make api request to fetch data
-cache
-    ? liveBetting.init(JSON.parse(cache))
-    : liveBetting.loadLiveEvents();
+if (cache) {
+    liveBetting.init(JSON.parse(cache))
+} else {
+    liveBetting.loadLiveEvents();
+}
 
-// request-callback
+// Api-request callback
 // cache data and initialize app
 var liveCallback = function (data) {
     window.localStorage.setItem('data', JSON.stringify(data));
