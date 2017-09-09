@@ -68,9 +68,7 @@ LiveBetting = function (url, callback) {
             away: liveEvents[index].liveData.score.away,
             sport: getSport(liveEvents[index].event.sport.toLowerCase()),
             date: getGameDate(new Date(liveEvents[index].event.start)),
-            src: function () {
-                return `./images/icons/${ this.sport }.png`
-            }
+            src: function () { return './images/icons/' + this.sport + '.png' }
         };
     }
 
