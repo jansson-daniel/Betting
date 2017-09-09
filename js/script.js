@@ -241,6 +241,7 @@ window.onload = (function (window) {
         }
     };
 
+    var liveCallback;
     var url = 'https://api.unicdn.net/v1/feeds/sportsbook/event/live.jsonp?app_id=ca7871d7&app_key=5371c125b8d99c8f6b5ff9a12de8b85a';
     var liveBetting = new LiveBetting(url, 'liveCallback');
     var cache = window.localStorage.getItem('data');
@@ -253,7 +254,7 @@ window.onload = (function (window) {
 
     // request-callback
     // cache data and initialize app
-    var liveCallback = function (data) {
+    liveCallback = function (data) {
         window.localStorage.setItem('data', JSON.stringify(data));
         liveBetting.init(data);
     };
