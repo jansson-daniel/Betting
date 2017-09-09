@@ -38,9 +38,8 @@
         </div>
     </footer>
 </div>
-<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 <script src="js/script.js"></script>
-<script type="text/babel">
+<script>
     const url = 'https://api.unicdn.net/v1/feeds/sportsbook/event/live.jsonp?app_id=ca7871d7&app_key=5371c125b8d99c8f6b5ff9a12de8b85a';
     const liveBetting = new LiveBetting(url, 'liveCallback');
     const cache = window.localStorage.getItem('data');
