@@ -195,7 +195,7 @@ LiveBetting = function (url, callback) {
      */
     function createIcons (index) {
         if (liveEvents.length > 0) {
-            sportIcon = '<img class="sport-icon" src="' + getGame(index).src() + '" />';
+            sportIcon = '<img class="sport-icon" src="' + getGame(index).src() + '" alt="sport-icon" />';
             bettingBtn = '<a href="' + rootUrl + '/' + getGame(index).id + '" target="blank" class="betting-btn">Place a bet</a>';
         } else {
             sportIcon = '';
