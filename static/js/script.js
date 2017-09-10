@@ -9,8 +9,6 @@ LiveBetting = function (url, callback) {
     var availableSports = ['tennis', 'football', 'basketball'];
     var rootUrl = 'https://www.unibet.com/betting#/event/live';
     var liveEvents = [];
-    var sportIcon;
-    var bettingBtn;
 
     /**
      * getGame (private)
@@ -74,7 +72,7 @@ LiveBetting = function (url, callback) {
     function getTimeFormat (date) {
         var hours = date.getHours();
         var minutes =  date.getMinutes();
-        var meridiem = " AM";
+        var amOrPm = " AM";
 
         if (hours > 12) {
             hours = hours - 12;
@@ -87,7 +85,7 @@ LiveBetting = function (url, callback) {
             minutes = "0" + minutes.toString()
         }
 
-        return hours + ':' + minutes.toString() + meridiem;
+        return hours + ':' + minutes.toString() + amOrPm;
     }
 
     /**
@@ -116,7 +114,7 @@ LiveBetting = function (url, callback) {
 
     /**
      * requestData (private)
-     * Request game-data from Unitbet Api
+     * Request game-data from Api
      * @returns {object} live data
      */
     function requestData () {
@@ -148,19 +146,20 @@ LiveBetting = function (url, callback) {
      * @returns {object} event
      */
     function createAnimation () {
-        if (liveEvents.length > 0) {
             var interval = setInterval(function () {
                 var now = Date.now();
                 var timeStamp = parseInt(window.localStorage.getItem('timeStamp'));
+
+                if (liveEvents.length > 0) {
+                    animateCards();
+                }
 
                 // request new live-data after two minutes
                 if (now - timeStamp > 120000) {
                     clearInterval(interval);
                     requestData();
                 }
-                animateCards();
             }, 3500);
-        }
     }
 
     /**
@@ -196,18 +195,21 @@ LiveBetting = function (url, callback) {
     }
 
     /**
-     * createIcons (private)
-     * Render elements if live-data exist
-     * @param {number} index - game object index
+     * offline(private)
+     * Hides elements if no data
      * @returns {void}
      */
-    function createIcons (index) {
-        if (liveEvents.length > 0) {
-            sportIcon = '<img class="sport-icon" src="' + getGame(index).src() + '" alt="sport-icon" />';
-            bettingBtn = '<a href="' + rootUrl + '/' + getGame(index).id + '" target="blank" class="betting-btn">Place a bet</a>';
-        } else {
-            sportIcon = '';
-            bettingBtn = '';
+    function offline () {
+        var sportsIcons = document.querySelectorAll('.sport-icon');
+        var bettingButton = document.querySelectorAll('.betting-btn');
+        var name = document.querySelectorAll('.name');
+
+        for (var i = 0; i < sportsIcons.length; i++) {
+            if (liveEvents.length === 0 || liveEvents === undefined) {
+                sportsIcons[i].style.display = 'none';
+                bettingButton[i].style.display = 'none';
+                name[i].innerHAML = 'Sorry, no data available.';
+            }
         }
     }
 
@@ -220,15 +222,15 @@ LiveBetting = function (url, callback) {
         var markup = '';
 
         for (var i = 0; i < 2; i++) {
-            createIcons(i);
-
             markup +=
                 '<div class="card">' +
                     '<span class="score">' + getGame(i).home + ' – ' + getGame(i).away + '</span>' +
-                    '<div class="game">' + sportIcon +
+                    '<div class="game">' +
+                        '<img class="sport-icon" src="' + getGame(i).src() + '" alt="sport-icon" />' +
                         '<span class="name">' + getGame(i).name + '</span>' +
                     '</div>' +
-                    '<span class="date">' + getGame(i).date + '</span>' + bettingBtn +
+                    '<span class="date">' + getGame(i).date + '</span>' +
+                    '<a href="' + rootUrl + '/' + getGame(i).id + '" target="blank" class="betting-btn">Place a bet</a>' +
                 '</div>'
         }
 
@@ -246,6 +248,7 @@ LiveBetting = function (url, callback) {
             liveEvents = data.liveEvents;
             createAnimation();
             render();
+            offline();
         },
         /**
          * loadLiveEvents (public)
