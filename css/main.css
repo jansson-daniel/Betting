@@ -134,6 +134,9 @@ article aside img {
 	margin-top: 9px;
 	margin-right: 4px;
 }
+.no-data {
+	margin-top: 25px;
+}
 footer {
 	background: #333;
 	color: #999;

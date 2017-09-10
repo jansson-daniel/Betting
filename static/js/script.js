@@ -74,12 +74,20 @@ LiveBetting = function (url, callback) {
     function getTimeFormat (date) {
         var hours = date.getHours();
         var minutes =  date.getMinutes();
+        var meridiem = " AM";
 
+        if (hours > 12) {
+            hours = hours - 12;
+            meridiem = ' PM'
+        }
+        else if (hours === 0) {
+            hours = 12
+        }
         if (minutes < 10) {
             minutes = "0" + minutes.toString()
         }
 
-        return hours + ':' + minutes.toString();
+        return hours + ':' + minutes.toString() + meridiem;
     }
 
     /**
@@ -216,11 +224,11 @@ LiveBetting = function (url, callback) {
 
             markup +=
                 '<div class="card">' +
-                '<span class="score">' + getGame(i).home + ' – ' + getGame(i).away + '</span>' +
-                '<div class="game">' + sportIcon +
-                '<span class="name">' + getGame(i).name + '</span>' +
-                '</div>' +
-                '<span class="date">' + getGame(i).date + '</span>' + bettingBtn +
+                    '<span class="score">' + getGame(i).home + ' – ' + getGame(i).away + '</span>' +
+                    '<div class="game">' + sportIcon +
+                        '<span class="name">' + getGame(i).name + '</span>' +
+                    '</div>' +
+                    '<span class="date">' + getGame(i).date + '</span>' + bettingBtn +
                 '</div>'
         }
 

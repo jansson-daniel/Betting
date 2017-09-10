@@ -74,12 +74,20 @@ LiveBetting = function (url, callback) {
     function getTimeFormat (date) {
         var hours = date.getHours();
         var minutes =  date.getMinutes();
+        var meridiem = " AM";
 
+        if (hours > 12) {
+            hours = hours - 12;
+            meridiem = ' PM'
+        }
+        else if (hours === 0) {
+            hours = 12
+        }
         if (minutes < 10) {
             minutes = "0" + minutes.toString()
         }
 
-        return hours + ':' + minutes.toString();
+        return hours + ':' + minutes.toString() + meridiem;
     }
 
     /**
